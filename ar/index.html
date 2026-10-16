@@ -333,7 +333,10 @@
   --f:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --r-lg:12px; --r-md:10px; --r-sm:8px; --r-xs:6px;
-  --shadow:0 2px 6px rgba(30,35,40,.05),0 16px 40px -16px rgba(30,35,40,.18);
+  --shadow-sm:0 1px 2px rgba(30,35,40,.04),0 4px 12px -2px rgba(30,35,40,.06),0 12px 24px -12px rgba(30,35,40,.10);
+  --shadow:0 2px 6px rgba(30,35,40,.05),0 16px 40px -16px rgba(30,35,40,.22);
+  --shadow-lg:0 4px 10px rgba(30,35,40,.06),0 24px 48px -16px rgba(30,35,40,.28),0 40px 80px -40px rgba(215,20,31,.25);
+  --glow:0 14px 30px -12px rgba(215,20,31,.55);
   --ease:cubic-bezier(.2,.7,.2,1);
   --flip:1;
   color-scheme:light;
@@ -441,7 +444,7 @@ section{padding-block:clamp(64px,8vw,104px)}
 .hero-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hero-visual::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(calc(90deg * var(--flip)),var(--bg-soft) 0%,rgba(246,247,249,.94) 26%,rgba(246,247,249,.55) 40%,rgba(246,247,249,0) 56%),linear-gradient(0deg,rgba(246,247,249,.9) 0%,rgba(246,247,249,0) 22%)}
 .hero-inner{display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:40px;align-items:center;width:100%}
-.hero-copy{display:grid;gap:24px;min-width:0;max-width:600px}
+.hero-copy{display:grid;gap:24px;min-width:0;max-width:540px}
 .hero-copy .lead{font-size:1.14rem;max-width:48ch}
 .h1-line{display:block;overflow:hidden;padding-bottom:.06em}
 .h1-kicker{font-size:.85rem;line-height:1.4;letter-spacing:0;margin-block-end:22px;animation:rise .8s var(--ease) both}
@@ -454,12 +457,14 @@ section{padding-block:clamp(64px,8vw,104px)}
 .hero-feats .ib{width:42px;height:42px;border-radius:var(--r-sm);background:rgba(255,255,255,.9);color:var(--brand);display:grid;place-items:center;border:1px solid var(--line);box-shadow:0 4px 14px -8px rgba(30,35,40,.3)}
 .hero-feats b{display:block;color:var(--ink);font-size:.92rem;line-height:1.3}
 .hero-feats span{font-size:.83rem;line-height:1.4;display:block}
-.float-card{position:absolute;z-index:2;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);border-radius:var(--r-md);box-shadow:var(--shadow);padding:11px 15px;display:flex;gap:11px;align-items:center;font-size:.8rem;line-height:1.35;animation:bob 6s ease-in-out infinite}
+.float-card{position:absolute;z-index:3;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);border-radius:var(--r-md);box-shadow:var(--shadow);padding:11px 15px;display:flex;gap:11px;align-items:center;font-size:.8rem;line-height:1.35;animation:bob 6s ease-in-out infinite}
 .float-card .ib{width:34px;height:34px;border-radius:var(--r-xs);background:var(--brand-50);color:var(--brand);display:grid;place-items:center;flex:none}
 .float-card .ib .ico{width:17px;height:17px}
 .float-card b{color:var(--ink);display:block;font-size:.88rem}
-.fc-1{inset-inline-start:47%;top:16%}
-.fc-2{inset-inline-start:54%;bottom:15%;animation-delay:-3s}
+.book-wrap{position:relative;min-width:0}
+.fc-1{inset-inline-end:calc(100% + 28px);top:12%}
+.fc-2{inset-inline-end:calc(100% + 28px);bottom:14%;animation-delay:-3s}
+.float-card{width:max-content;max-width:210px}
 @keyframes bob{50%{transform:translateY(-8px)}}
 
 /* dark hero (photo on black) */
@@ -516,7 +521,7 @@ section{padding-block:clamp(64px,8vw,104px)}
 @keyframes lineup{from{transform:translateY(105%)}to{transform:none}}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
-@media (max-width:1240px){.float-card{display:none}}
+@media (max-width:1279px){.float-card{display:none}}
 @media (max-width:1000px){.hero-inner{grid-template-columns:minmax(0,1fr) 340px;gap:28px}.hero-feats{grid-template-columns:1fr;gap:12px}}
 @media (max-width:899px){
   .hero{min-height:0;display:block;padding-block:0 120px}
@@ -637,6 +642,7 @@ section{padding-block:clamp(64px,8vw,104px)}
 .journey h2,.journey h3{color:#fff}
 .journey .pill{background:rgba(237,28,36,.14);border-color:rgba(237,28,36,.35);color:#FF9DA2}
 .journey .sec-head p{color:#AEB6BF}
+.journey .sec-head{margin-bottom:32px}
 .j-ctrl{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:999px;padding:9px 16px;font:600 .88rem var(--f);cursor:pointer;min-height:44px}
 .j-ctrl:hover{border-color:#fff}
 .j-ctrl .ico{width:16px;height:16px}
@@ -863,7 +869,8 @@ section{padding-block:clamp(64px,8vw,104px)}
 .foot a:hover{color:#fff}
 .foot address{font-style:normal;display:grid;gap:10px}
 .foot address > span{display:flex;gap:10px;align-items:flex-start}
-.foot address a{text-decoration:none;white-space:nowrap;display:inline-block;padding-block:5px}
+.foot address a{text-decoration:none;display:inline-block;padding-block:5px}
+.foot address bdi{white-space:nowrap}
 .foot address .ico{width:17px;height:17px;color:#F58A8F;margin-top:3px}
 .foot ul.f-acc{display:flex;flex-wrap:wrap;gap:8px}
 .f-acc li{background:#fff;border-radius:var(--r-xs);padding:6px 10px;height:52px;display:grid;place-items:center}
@@ -875,7 +882,7 @@ section{padding-block:clamp(64px,8vw,104px)}
 .foot .social a:hover{background:var(--brand)}
 .social svg{width:18px;height:18px;fill:currentColor}
 .foot-base{margin-top:44px;border-top:1px solid rgba(255,255,255,.12);padding-block:20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.84rem}
-@media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}.foot-about{grid-column:1/-1}}
+@media (max-width:1100px){.foot-grid{grid-template-columns:1fr 1fr}.foot-about{grid-column:1/-1}}
 @media (max-width:520px){.foot-grid{grid-template-columns:1fr}}
 
 /* Mobile action bar */
@@ -894,6 +901,32 @@ section{padding-block:clamp(64px,8vw,104px)}
 .rv-wait{translate:0 34px}
 .rv-in{animation:rvIn 1s var(--ease) both;animation-delay:calc(var(--d,0) * 90ms)}
 @keyframes rvIn{from{translate:0 34px}to{translate:0 0}}
+
+/* Elevation pass: resting shadows on surfaces, deeper lift on hover */
+.tcard,.acc-tile,.stats,.start article,.faq details,.pm-stats div,.punnett,.accred-strip,.marquee li,.partners li,.mini{box-shadow:var(--shadow-sm)}
+.tcard:hover,.start article:hover{box-shadow:var(--shadow-lg)}
+.acc-logos li:hover .acc-tile{box-shadow:var(--shadow-lg)}
+.faq details[open]{box-shadow:var(--shadow-lg)}
+.report{box-shadow:var(--shadow-lg)}
+.report:hover{box-shadow:0 30px 60px -20px rgba(30,35,40,.35)}
+.btn-primary{box-shadow:var(--glow)}
+.btn-primary:hover{box-shadow:0 18px 36px -12px rgba(215,20,31,.7)}
+.btn-outline:hover{box-shadow:var(--shadow)}
+.hero--dark .btn-outline:hover{box-shadow:0 10px 30px -12px rgba(255,255,255,.35)}
+.book{box-shadow:0 2px 6px rgba(0,0,0,.2),0 30px 70px -20px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06),0 0 60px -10px rgba(237,28,36,.35)}
+.float-card{box-shadow:0 2px 6px rgba(0,0,0,.18),0 20px 40px -14px rgba(0,0,0,.55)}
+.band-inner{box-shadow:0 30px 60px -24px rgba(168,15,24,.75),0 8px 20px -8px rgba(30,35,40,.25)}
+.hero-feats .ib,.tcard .ib,.stats .ib,.start article .ib{box-shadow:0 6px 14px -6px rgba(215,20,31,.35)}
+.hero--dark .hero-feats .ib{box-shadow:0 6px 18px -6px rgba(237,28,36,.45)}
+.j-stage{box-shadow:0 30px 70px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06)}
+.viz{box-shadow:inset 0 0 40px rgba(0,0,0,.35)}
+.j-tab[aria-selected="true"]{box-shadow:0 14px 30px -16px rgba(0,0,0,.7)}
+.cta-inner{box-shadow:0 30px 60px -24px rgba(168,15,24,.7)}
+.start article.dark{box-shadow:0 24px 50px -20px rgba(30,35,40,.6)}
+.site-head.scrolled{box-shadow:0 10px 30px -12px rgba(30,35,40,.3)}
+.checks .ico{box-shadow:0 4px 10px -3px rgba(215,20,31,.5)}
+.dot.aff,.dot.carrier{box-shadow:0 6px 14px -6px rgba(215,20,31,.5)}
+.f-acc li{box-shadow:0 4px 12px -4px rgba(0,0,0,.5)}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .rv-wait{translate:none}
@@ -980,12 +1013,10 @@ section{padding-block:clamp(64px,8vw,104px)}
     </picture>
     <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
   </div>
-  <div class="float-card fc-1" aria-hidden="true"><span class="ib"><svg class="ico"><use href="#i-flask"/></svg></span><div><b>نتائج NIPT</b>خلال 5 إلى 7 أيام تقريباً</div></div>
-  <div class="float-card fc-2" aria-hidden="true"><span class="ib"><svg class="ico"><use href="#i-steth"/></svg></span><div><b>شركاء دوليون</b>CeGaT وGeneDx وغيرهما</div></div>
 
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <h1 id="hero-title"><span class="pill h1-kicker"><svg class="ico" aria-hidden="true"><use href="#i-dna"/></svg>الفحوصات الجينية في أبوظبي<span class="sr">: </span></span> <span class="h1-line"><span style="--i:0">جيناتك،</span></span> <span class="h1-line accent"><span style="--i:1">مشروحة بوضوح</span></span></h1>
+      <h1 id="hero-title"><span class="h1-line"><span style="--i:0">جيناتك،</span></span> <span class="h1-line accent"><span style="--i:1">مشروحة بوضوح</span></span></h1>
       <p class="lead" style="--i:1">فحص ما قبل الزواج، وفحص NIPT، وتسلسل الإكسوم، وفحوصات السرطان الوراثي في مختبر أكيوريسي بلس الطبي، مع تقارير واضحة لك ولطبيبك وسحب العينات من المنزل في جميع أنحاء الإمارات.</p>
       <div class="hero-cta" style="--i:2">
         <a class="btn btn-primary" href="#book"><svg class="ico"><use href="#i-cal"/></svg>احجز فحصاً جينياً</a>
@@ -999,6 +1030,9 @@ section{padding-block:clamp(64px,8vw,104px)}
       </ul>
     </div>
 
+    <div class="book-wrap">
+    <div class="float-card fc-1" aria-hidden="true"><span class="ib"><svg class="ico"><use href="#i-flask"/></svg></span><div><b>نتائج NIPT</b>خلال 5 إلى 7 أيام تقريباً</div></div>
+    <div class="float-card fc-2" aria-hidden="true"><span class="ib"><svg class="ico"><use href="#i-dna"/></svg></span><div><b>شركاء دوليون</b>CeGaT وGeneDx وغيرهما</div></div>
     <form class="book" id="book" novalidate aria-labelledby="book-title">
       <h2 id="book-title">احجز فحصاً جينياً</h2>
       <p>أرسل طلبك وسيتواصل معك فريق الفحوصات الجينية لتأكيد موعدك.</p>
@@ -1035,6 +1069,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       <div class="book-or">أو اتصل بنا</div>
       <a class="book-call" href="tel:+97126333923"><svg class="ico"><use href="#i-phone"/></svg><bdi dir="ltr">+971 2 633 3923</bdi></a>
     </form>
+    </div>
   </div>
 </section>
 
