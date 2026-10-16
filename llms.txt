@@ -1,6 +1,6 @@
 # Accuracy Plus Medical Laboratory — Genetics
 
-> Accuracy Plus Medical Laboratory (مختبر أكيوريسي بلس الطبي) in Abu Dhabi, UAE offers genetic testing with genetic counselling before and after every result, and home sample collection across Abu Dhabi.
+> Accuracy Plus Medical Laboratory (مختبر أكيوريسي بلس الطبي) in Abu Dhabi, UAE offers genetic testing with home sample collection across the UAE, in partnership with international genetics laboratories including CeGaT and GeneDx.
 
 ## Genetic tests
 - Premarital and expanded carrier screening, including thalassaemia, sickle cell and spinal muscular atrophy. Open to all couples in the UAE. Results in about 2–3 weeks.
@@ -11,6 +11,8 @@
 - Oncology: tumour profiling, liquid biopsy (ctDNA), myeloid and lymphoid panels, HRD testing.
 
 ## Key facts
+- Partnered with international genetics laboratories, including CeGaT (Germany) and GeneDx (USA).
+- Home sample collection anywhere in the UAE.
 - Accredited by the College of American Pathologists (CAP) and by EIAC to ISO 15189.
 - Serving Abu Dhabi since 2017.
 - Variants are classified with the ACMG five-tier system and reported in HGVS nomenclature.
@@ -24,6 +26,6 @@
 ## Contact
 - Phone: +971 2 633 3923, +971 54 234 6392
 - WhatsApp: +971 50 805 6623
-- Email: info@apml.co
+- Email: support@apml.co
 - Address: M02, Opposite Home Centre, Hamdan Street, Abu Dhabi, UAE
 - Website: https://accuracyplusmedlab.com
