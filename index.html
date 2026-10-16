@@ -378,7 +378,7 @@ section{padding-block:clamp(64px,8vw,104px)}
 .topbar .wrap{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;padding-block:9px}
 .topbar ul{display:flex;gap:8px 22px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
 .topbar li{display:flex;align-items:center;gap:8px}
-.topbar a{text-decoration:none}
+.topbar a{text-decoration:none;display:inline-block;padding-block:6px;margin-block:-6px}
 .topbar a:hover{color:#fff}
 .topbar .ico{width:15px;height:15px;color:#F58A8F}
 .lang-link{font-weight:700;color:#fff}
@@ -534,7 +534,7 @@ section{padding-block:clamp(64px,8vw,104px)}
 .band-inner b{display:block;font-size:1rem;line-height:1.3}
 .band-inner span{display:block;font-size:.86rem;color:#FFE3E4;line-height:1.45;margin-top:2px}
 @media (max-width:980px){.band-inner{grid-template-columns:1fr 1fr}.band-inner li:nth-child(3)::before{display:none}.band-inner li:nth-child(n+3){border-top:1px solid rgba(255,255,255,.2)}}
-@media (max-width:560px){.band-inner{grid-template-columns:1fr}.band-inner li::before{display:none}.band-inner li + li{border-top:1px solid rgba(255,255,255,.2)}.band-inner li{padding:18px 20px}}
+@media (max-width:560px){.band-inner li{grid-template-columns:1fr;gap:8px;padding:16px 14px}.band-inner .ib{width:36px;height:36px}.band-inner .ib .ico{width:18px;height:18px}.band-inner b{font-size:.9rem}.band-inner span{display:none}}
 .marquee{margin-top:28px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marquee-track{display:flex;width:max-content;gap:0;animation:marq 48s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
@@ -542,6 +542,20 @@ section{padding-block:clamp(64px,8vw,104px)}
 .marquee li{display:flex;align-items:center;gap:10px;white-space:nowrap;font-weight:600;color:var(--ink);font-size:.95rem;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:#fff}
 .marquee li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand)}
 @keyframes marq{to{transform:translateX(calc(-50% * var(--flip)))}}
+
+/* Accreditation strip */
+.accred-strip{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:24px 40px;align-items:center;margin-top:36px;padding:26px 28px;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg)}
+.acc-copy{display:grid;gap:6px}
+.acc-copy h2{font-size:1.25rem}
+.acc-copy p{font-size:.92rem}
+.acc-logos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.acc-logos li{display:grid;gap:8px;justify-items:center;text-align:center;min-width:0}
+.acc-tile{display:grid;place-items:center;width:100%;height:96px;padding:12px 16px;border-radius:var(--r-md);background:var(--bg-soft);border:1px solid var(--line);transition:transform .35s var(--ease),box-shadow .35s ease}
+.acc-logos li:hover .acc-tile{transform:translateY(-3px);box-shadow:var(--shadow)}
+.acc-tile img{max-height:70px;width:auto;max-width:100%;object-fit:contain}
+.acc-cap{font-size:.8rem;font-weight:600;color:var(--ink);line-height:1.35}
+@media (max-width:860px){.accred-strip{grid-template-columns:1fr;padding:20px 18px}}
+@media (max-width:520px){.acc-logos{gap:8px}.acc-tile{height:72px;padding:8px}.acc-tile img{max-height:52px}.acc-cap{font-size:.72rem}}
 
 /* Test cards */
 .tests{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
@@ -560,8 +574,12 @@ section{padding-block:clamp(64px,8vw,104px)}
 .tcard li .ico{width:16px;height:16px;color:var(--brand-bright);margin-top:4px}
 .tcard-meta{display:flex;gap:6px 18px;flex-wrap:wrap;font-size:.84rem;padding-top:12px;margin-top:auto;border-top:1px dashed var(--line)}
 .tcard-meta b{color:var(--ink)}
+.tcard-cta{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;color:var(--brand);font-weight:700;font-size:.92rem;text-decoration:none;padding-block:6px}
+.tcard-cta .ico{width:16px;height:16px;transform:scaleX(var(--flip));transition:transform .25s var(--ease)}
+.tcard-cta:hover .ico{transform:scaleX(var(--flip)) translateX(4px)}
+.swipe-hint{display:none}
 @media (max-width:980px){.tests{grid-template-columns:1fr 1fr}}
-@media (max-width:640px){.tests{grid-template-columns:1fr}.tests{gap:14px}.tcard{padding:22px 20px}}
+@media (max-width:640px){.tests{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-20px;padding:4px 20px 14px;scrollbar-width:none}.tests::-webkit-scrollbar{display:none}.tcard{flex:0 0 86%;scroll-snap-align:center;padding:22px 20px}.tcard:hover{transform:none}.swipe-hint{display:block;font-size:.85rem;font-weight:600;color:var(--brand);margin:0 0 10px}.sec-head{margin-bottom:22px}}
 
 /* Why */
 .why{background:var(--bg-soft);border-block:1px solid var(--line)}
@@ -756,7 +774,7 @@ section{padding-block:clamp(64px,8vw,104px)}
 .pm-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0}
 .pm-stats div{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px}
 .pm-stats b{display:block;font-size:2.4rem;font-weight:800;color:var(--brand);line-height:1;font-variant-numeric:tabular-nums}
-.pm-stats span{font-size:.88rem}
+.pm-stats div > span{font-size:.88rem}
 .source{font-size:.84rem}
 .source a{color:var(--brand);font-weight:700}
 .punnett{margin:0;background:#fff;border-radius:var(--r-lg);padding:26px;display:grid;gap:16px;box-shadow:var(--shadow);min-width:0}
@@ -804,7 +822,7 @@ section{padding-block:clamp(64px,8vw,104px)}
 @media (max-width:900px){.faq-grid{grid-template-columns:1fr}.faq-side{position:static}.faq details{padding:0 16px}}
 
 /* CTA */
-.cta{padding-block:clamp(56px,7vw,88px)}
+.cta{padding-block:clamp(48px,6vw,72px)}
 .cta-inner{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(100deg,var(--brand) 0%,#A80F18 100%);border-radius:var(--r-lg);padding:clamp(26px,4vw,44px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px 28px;align-items:center;color:#FFE3E4}
 .cta-inner::before{content:"";position:absolute;inset-inline-end:-80px;top:-120px;width:360px;height:360px;border-radius:50%;border:40px solid rgba(255,255,255,.07);z-index:-1}
 .cta-inner .ib{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;color:#fff}
@@ -825,12 +843,16 @@ section{padding-block:clamp(64px,8vw,104px)}
 .foot .brand-logo{height:34px}
 .foot h2{color:#fff;font-size:1rem;margin-bottom:10px}
 .foot ul{list-style:none;margin:0;padding:0;display:grid}
+.foot ul.social{display:flex}
 .foot ul a{display:block;padding-block:6px;text-decoration:none}
 .foot a:hover{color:#fff}
 .foot address{font-style:normal;display:grid;gap:10px}
 .foot address > span{display:flex;gap:10px;align-items:flex-start}
-.foot address a{text-decoration:none;white-space:nowrap}
+.foot address a{text-decoration:none;white-space:nowrap;display:inline-block;padding-block:5px}
 .foot address .ico{width:17px;height:17px;color:#F58A8F;margin-top:3px}
+.foot ul.f-acc{display:flex;flex-wrap:wrap;gap:8px}
+.f-acc li{background:#fff;border-radius:var(--r-xs);padding:6px 10px;height:52px;display:grid;place-items:center}
+.f-acc img{max-height:40px;width:auto}
 .accred{display:flex;gap:8px;flex-wrap:wrap}
 .accred span{font-size:.78rem;font-weight:700;color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:var(--r-xs);padding:4px 10px}
 .social{display:flex;gap:10px;list-style:none;margin:0;padding:0}
@@ -848,7 +870,7 @@ section{padding-block:clamp(64px,8vw,104px)}
   .mbar.show{transform:none}
   .mbar a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;border-radius:var(--r-sm);font-weight:700;font-size:.92rem;text-decoration:none;border:1.5px solid var(--line);color:var(--ink);background:#fff}
   .mbar a .ico{width:18px;height:18px}
-  .mbar a.wa{color:#128C4A;border-color:#BFE6CF}
+  .mbar a.wa{color:#0B6E3A;border-color:#BFE6CF}
   .mbar a.bk{background:var(--brand);border-color:var(--brand);color:#fff}
   body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 }
@@ -894,7 +916,7 @@ section{padding-block:clamp(64px,8vw,104px)}
 
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="topbar">
+<aside class="topbar" aria-label="Contact details">
   <div class="wrap">
     <ul>
       <li class="hide-sm"><svg class="ico"><use href="#i-pin"/></svg>M02, Opposite Home Centre, Hamdan Street, Abu Dhabi</li>
@@ -906,7 +928,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       <li><a class="lang-link" href="https://accuracyplus.github.io/genetic-testing-abu-dhabi/ar/" hreflang="ar" lang="ar">العربية</a></li>
     </ul>
   </div>
-</div>
+</aside>
 
 <header class="site-head" id="top">
   <div class="wrap head-row">
@@ -948,7 +970,7 @@ section{padding-block:clamp(64px,8vw,104px)}
 
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <h1 id="hero-title"><span class="pill h1-kicker"><svg class="ico" aria-hidden="true"><use href="#i-dna"/></svg>Genetic testing in Abu Dhabi<span class="sr">:</span></span><span class="h1-line"><span style="--i:0">Your Genes,</span></span> <span class="h1-line accent"><span style="--i:1">Clearly Explained</span></span></h1>
+      <h1 id="hero-title"><span class="pill h1-kicker"><svg class="ico" aria-hidden="true"><use href="#i-dna"/></svg>Genetic testing in Abu Dhabi<span class="sr">: </span></span> <span class="h1-line"><span style="--i:0">Your Genes,</span></span> <span class="h1-line accent"><span style="--i:1">Clearly Explained</span></span></h1>
       <p class="lead" style="--i:1">Premarital screening, NIPT, exome sequencing and hereditary cancer tests at Accuracy Plus Medical Laboratory, with a genetic counsellor to guide you before and after every result.</p>
       <div class="hero-cta" style="--i:2">
         <a class="btn btn-primary" href="#book"><svg class="ico"><use href="#i-cal"/></svg>Book genetic counselling</a>
@@ -1010,6 +1032,10 @@ section{padding-block:clamp(64px,8vw,104px)}
       <li><span class="ib"><svg class="ico"><use href="#i-shield"/></svg></span><div><b>Accredited laboratory</b><span>CAP and EIAC (ISO 15189) accredited</span></div></li>
       
     </ul>
+    <section class="accred-strip" aria-labelledby="acc-title">
+      <div class="acc-copy"><h2 id="acc-title">Accredited to international standards</h2><p>Your genetic test is handled by a laboratory accredited by the College of American Pathologists and by EIAC to ISO 15189:2022.</p></div>
+      <ul class="acc-logos"><li><span class="acc-tile"><img src="/genetic-testing-abu-dhabi/images/cap.webp" alt="CAP Accredited, College of American Pathologists" width="408" height="169" loading="lazy" decoding="async"></span><span class="acc-cap">CAP accredited</span></li><li><span class="acc-tile"><img src="/genetic-testing-abu-dhabi/images/eiac.webp" alt="Emirates International Accreditation Centre, ISO 15189:2022" width="384" height="203" loading="lazy" decoding="async"></span><span class="acc-cap">EIAC · ISO 15189:2022</span></li><li><span class="acc-tile"><img src="/genetic-testing-abu-dhabi/images/icv.webp" alt="National In-Country Value (ICV) Programme" width="335" height="198" loading="lazy" decoding="async"></span><span class="acc-cap">National ICV Programme</span></li></ul>
+    </section>
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
         <ul><li>Expanded carrier screening</li><li>NIPT</li><li>Whole exome sequencing</li><li>Whole genome sequencing</li><li>BRCA1 &amp; BRCA2</li><li>Thalassaemia &amp; sickle cell</li><li>PGT-A &amp; PGT-M</li><li>Chromosomal microarray</li><li>Liquid biopsy</li><li>Lynch syndrome</li></ul><ul><li>Expanded carrier screening</li><li>NIPT</li><li>Whole exome sequencing</li><li>Whole genome sequencing</li><li>BRCA1 &amp; BRCA2</li><li>Thalassaemia &amp; sickle cell</li><li>PGT-A &amp; PGT-M</li><li>Chromosomal microarray</li><li>Liquid biopsy</li><li>Lynch syndrome</li></ul>
@@ -1028,6 +1054,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       </div>
       <a class="link-arrow" href="#book">Ask which test is right for you<svg class="ico"><use href="#i-arrow"/></svg></a>
     </div>
+    <p class="swipe-hint" aria-hidden="true">Swipe to see all 6 test groups →</p>
     <div class="tests">
       
       <article class="tcard rv" id="carrier-screening" style="--d:0">
@@ -1036,6 +1063,7 @@ section{padding-block:clamp(64px,8vw,104px)}
         <p>Find out whether you and your partner carry the same recessive condition before you plan a family.</p>
         <ul><li><svg class="ico"><use href="#i-check"/></svg><span>Expanded carrier screening</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Thalassaemia &amp; sickle cell</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Spinal muscular atrophy</span></li></ul>
         <div class="tcard-meta"><span>Sample: <b>blood or saliva</b></span><span>Results: <b>2–3 weeks</b></span></div>
+        <a class="tcard-cta" href="#book" data-test="1">Book this test<svg class="ico"><use href="#i-arrow"/></svg></a>
       </article>
       
       <article class="tcard rv" id="fertility" style="--d:1">
@@ -1044,6 +1072,7 @@ section{padding-block:clamp(64px,8vw,104px)}
         <p>Testing for couples facing infertility or recurrent miscarriage, and for embryos during IVF.</p>
         <ul><li><svg class="ico"><use href="#i-check"/></svg><span>PGT-A and PGT-M</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Couple karyotype</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Y-chromosome microdeletion</span></li></ul>
         <div class="tcard-meta"><span>Sample: <b>blood or embryo biopsy</b></span><span>Results: <b>varies by test</b></span></div>
+        <a class="tcard-cta" href="#book" data-test="2">Book this test<svg class="ico"><use href="#i-arrow"/></svg></a>
       </article>
       
       <article class="tcard rv" id="nipt" style="--d:2">
@@ -1052,6 +1081,7 @@ section{padding-block:clamp(64px,8vw,104px)}
         <p>A simple blood draw from 10 weeks of pregnancy screens your baby for common chromosome conditions.</p>
         <ul><li><svg class="ico"><use href="#i-check"/></svg><span>NIPT for trisomy 21, 18 and 13</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>NIPT with microdeletions</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Prenatal microarray</span></li></ul>
         <div class="tcard-meta"><span>Sample: <b>mother&#39;s blood</b></span><span>Results: <b>5–7 days</b></span></div>
+        <a class="tcard-cta" href="#book" data-test="3">Book this test<svg class="ico"><use href="#i-arrow"/></svg></a>
       </article>
       
       <article class="tcard rv" id="exome-genome" style="--d:0">
@@ -1060,6 +1090,7 @@ section{padding-block:clamp(64px,8vw,104px)}
         <p>For children and adults with an undiagnosed condition, developmental delay or a suspected inherited disease.</p>
         <ul><li><svg class="ico"><use href="#i-check"/></svg><span>Whole exome &amp; whole genome</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Clinical exome &amp; trio analysis</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Chromosomal microarray</span></li></ul>
         <div class="tcard-meta"><span>Sample: <b>blood or saliva</b></span><span>Results: <b>4–8 weeks</b></span></div>
+        <a class="tcard-cta" href="#book" data-test="4">Book this test<svg class="ico"><use href="#i-arrow"/></svg></a>
       </article>
       
       <article class="tcard rv" id="hereditary-cancer" style="--d:1">
@@ -1068,6 +1099,7 @@ section{padding-block:clamp(64px,8vw,104px)}
         <p>Check your inherited risk if breast, ovarian, bowel or prostate cancer runs in your family.</p>
         <ul><li><svg class="ico"><use href="#i-check"/></svg><span><span class="gene">BRCA1</span> &amp; <span class="gene">BRCA2</span></span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Hereditary cancer panel</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Lynch syndrome</span></li></ul>
         <div class="tcard-meta"><span>Sample: <b>blood or saliva</b></span><span>Results: <b>2–4 weeks</b></span></div>
+        <a class="tcard-cta" href="#book" data-test="5">Book this test<svg class="ico"><use href="#i-arrow"/></svg></a>
       </article>
       
       <article class="tcard rv" id="oncology" style="--d:2">
@@ -1076,6 +1108,7 @@ section{padding-block:clamp(64px,8vw,104px)}
         <p>Genomic profiling of tumours and blood cancers to guide targeted therapy. Ordered by your oncologist.</p>
         <ul><li><svg class="ico"><use href="#i-check"/></svg><span>Comprehensive tumour panels</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Liquid biopsy (ctDNA)</span></li><li><svg class="ico"><use href="#i-check"/></svg><span>Myeloid, lymphoid &amp; HRD panels</span></li></ul>
         <div class="tcard-meta"><span>Sample: <b>tissue or blood</b></span><span>Results: <b>2–3 weeks</b></span></div>
+        <a class="tcard-cta" href="#book" data-test="6">Book this test<svg class="ico"><use href="#i-arrow"/></svg></a>
       </article>
       
     </div>
@@ -1319,9 +1352,9 @@ section{padding-block:clamp(64px,8vw,104px)}
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-about">
-        <a class="brand" href="https://accuracyplusmedlab.com/" aria-label="Accuracy Plus Medical Laboratory, home"><img class="brand-logo" src="/genetic-testing-abu-dhabi/images/accuracy-plus-logo-white.png" alt="Accuracy Plus Medical Laboratory" width="327" height="45" loading="lazy"></a>
+        <a class="brand" href="https://accuracyplusmedlab.com/" aria-label="Accuracy Plus Medical Laboratory, home"><img class="brand-logo" src="/genetic-testing-abu-dhabi/images/accuracy-plus-logo-white.png" alt="Accuracy Plus Medical Laboratory" width="327" height="45"></a>
         <p>Genetic testing and counselling at Accuracy Plus Medical Laboratory, Abu Dhabi. Because every result matters. Trusted since 2017.</p>
-        <div class="accred"><span>CAP accredited</span><span>EIAC · ISO 15189</span></div>
+        <ul class="f-acc" aria-label="Accredited to international standards"><li><img src="/genetic-testing-abu-dhabi/images/cap.webp" alt="CAP Accredited, College of American Pathologists" width="408" height="169" loading="lazy" decoding="async"></li><li><img src="/genetic-testing-abu-dhabi/images/eiac.webp" alt="Emirates International Accreditation Centre, ISO 15189:2022" width="384" height="203" loading="lazy" decoding="async"></li><li><img src="/genetic-testing-abu-dhabi/images/icv.webp" alt="National In-Country Value (ICV) Programme" width="335" height="198" loading="lazy" decoding="async"></li></ul>
         <ul class="social" aria-label="Accuracy Plus on social media">
           <li><a href="https://www.facebook.com/595705743960171/" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v9h4v-9h3l.5-4h-3.5V8.8c0-.5.3-.8.8-.8Z"/></svg></a></li>
           <li><a href="https://www.linkedin.com/company/accuracyplusmedlab/" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3 9h3v12H3V9Zm6 0h2.9v1.7c.5-.9 1.7-2 3.6-2 3.8 0 4.5 2.4 4.5 5.6V21h-3v-5.9c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1v6H9V9Z"/></svg></a></li>
@@ -1463,6 +1496,9 @@ section{padding-block:clamp(64px,8vw,104px)}
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){inView=es[0].isIntersecting;schedule();},{threshold:.35}).observe(J);}
   document.addEventListener('visibilitychange',schedule);
   show(0);
+
+  /* test card buttons preselect the test in the booking form */
+  document.querySelectorAll('.tcard-cta').forEach(function(a){a.addEventListener('click',function(){var s=document.getElementById('bk-test');s.selectedIndex=+a.dataset.test;setTimeout(function(){document.getElementById('bk-name').focus({preventScroll:true});},600);});});
 
   /* booking form -> WhatsApp */
   var WA='971508056623',L={"hi": "Hello Accuracy Plus, I would like to book a genetic test.", "name": "Name", "phone": "Mobile", "test": "Test", "date": "Preferred date", "where": "Collection", "done": "Your booking message is ready. Send it to us on WhatsApp to confirm your appointment.", "done_link": "Open WhatsApp to send"};
