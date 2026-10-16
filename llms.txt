@@ -1,0 +1,29 @@
+# Accuracy Plus Medical Laboratory — Genetics
+
+> Accuracy Plus Medical Laboratory (مختبر أكيوريسي بلس الطبي) in Abu Dhabi, UAE offers genetic testing with genetic counselling before and after every result, and home sample collection across Abu Dhabi.
+
+## Genetic tests
+- Premarital and expanded carrier screening, including thalassaemia, sickle cell and spinal muscular atrophy. Open to all couples in the UAE. Results in about 2–3 weeks.
+- NIPT (non-invasive prenatal testing) from 10 weeks of pregnancy, with optional microdeletions. Results in about 5–7 days.
+- Fertility and IVF genetics: PGT-A, PGT-M, couple karyotype, Y-chromosome microdeletion.
+- Whole exome sequencing, whole genome sequencing, clinical exome, trio analysis, chromosomal microarray. Results in about 4–8 weeks.
+- Hereditary cancer: BRCA1 and BRCA2, hereditary cancer panels, Lynch syndrome. Results in about 2–4 weeks.
+- Oncology: tumour profiling, liquid biopsy (ctDNA), myeloid and lymphoid panels, HRD testing.
+
+## Key facts
+- Accredited by the College of American Pathologists (CAP) and by EIAC to ISO 15189.
+- Serving Abu Dhabi since 2017.
+- Variants are classified with the ACMG five-tier system and reported in HGVS nomenclature.
+- Patients can book without a referral for most tests.
+- Premarital genetic testing has been mandatory for Emirati citizens since January 2025; Accuracy Plus offers carrier screening to all couples.
+
+## Pages
+- [Genetic testing in Abu Dhabi](https://accuracyplus.github.io/genetic-testing-abu-dhabi/): test menu, process, sample report, premarital screening and FAQ (English).
+- [الفحوصات الجينية في أبوظبي](https://accuracyplus.github.io/genetic-testing-abu-dhabi/ar/): the same page in Arabic.
+
+## Contact
+- Phone: +971 2 633 3923, +971 54 234 6392
+- WhatsApp: +971 50 805 6623
+- Email: info@apml.co
+- Address: M02, Opposite Home Centre, Hamdan Street, Abu Dhabi, UAE
+- Website: https://accuracyplusmedlab.com
