@@ -932,6 +932,29 @@ section{padding-block:clamp(64px,8vw,104px)}
   .rv-wait{translate:none}
   .hero-photo{opacity:1}
 }
+
+/* Quality of life */
+.progress{position:absolute;inset-inline:0;bottom:-1px;height:3px;pointer-events:none}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),#FF5A60);transform:scaleX(var(--p,0));transform-origin:left center;will-change:transform}
+[dir="rtl"] .progress i{transform-origin:right center;background:linear-gradient(270deg,var(--brand),#FF5A60)}
+.nav-links a[aria-current]{color:var(--brand)}
+.nav-links a[aria-current]::after{transform:scaleX(1)}
+.to-top{position:fixed;inset-inline-end:max(20px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:55;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--brand);border:1px solid var(--line);box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;translate:0 12px;transition:opacity .3s ease,translate .3s var(--ease),visibility 0s linear .3s,box-shadow .25s ease}
+.to-top.show{opacity:1;visibility:visible;translate:none;transition:opacity .3s ease,translate .3s var(--ease),visibility 0s,box-shadow .25s ease}
+.to-top:hover{box-shadow:var(--shadow-lg),var(--glow)}
+.to-top .ico{width:20px;height:20px}
+@media (max-width:899px){.to-top{bottom:calc(88px + env(safe-area-inset-bottom,0px));width:44px;height:44px}}
+.field.ok .control{animation:pickflash 1.2s ease}
+@keyframes pickflash{0%,100%{box-shadow:none}25%{box-shadow:0 0 0 4px rgba(215,20,31,.25)}}
+.faq details:target{border-color:var(--brand)}
+@media print{
+  .topbar,.site-head,.hero-visual,.hero-mesh,.hero-grid-bg,.mbar,.to-top,.book,.float-card,.j-ctrl,.cta,.skip,.foot .social{display:none!important}
+  .hero--dark,.hero--dark *{color:#000!important;background:none!important}
+  .rv-wait{translate:none!important}
+  .faq details .a,.j-panel{display:block!important}
+  body{padding:0!important}
+  a[href^="tel:"]::after,a[href^="mailto:"]::after{content:""}
+}
 </style>
 </head>
 <body>
@@ -972,7 +995,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       <li class="hide-sm"><svg class="ico"><use href="#i-mail"/></svg><a href="mailto:support@apml.co">support@apml.co</a></li>
     </ul>
     <ul>
-      <li class="hide-sm"><svg class="ico"><use href="#i-chat"/></svg><a href="https://wa.me/971508056623">واتساب <bdi dir="ltr">+971 50 805 6623</bdi></a></li>
+      <li class="hide-sm"><svg class="ico"><use href="#i-chat"/></svg><a href="https://wa.me/971508056623" target="_blank" rel="noopener">واتساب <bdi dir="ltr">+971 50 805 6623</bdi></a></li>
       <li><a class="lang-link" href="https://accuracyplus.github.io/genetic-testing-abu-dhabi/" hreflang="en" lang="en">English</a></li>
     </ul>
   </div>
@@ -998,6 +1021,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       </button>
     </nav>
   </div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
 </header>
 
 <main id="main">
@@ -1352,7 +1376,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       <article class="dark rv" id="physicians" style="--d:1">
         <span class="ib"><svg class="ico"><use href="#i-steth"/></svg></span>
         <h3>للأطباء</h3>
-        <ul><li>نماذج طلب الفحص ومتطلبات العينات عند الطلب</li><li>استلام العينات من عيادتك في أبوظبي</li><li>مناقشة الحالة قبل طلب الفحوصات المعقدة</li><li>تقارير بتصنيف ACMG وترميز HGVS</li></ul>
+        <ul><li>نماذج طلب الفحص ومتطلبات العينات عند الطلب</li><li>استلام العينات من عيادتك في جميع أنحاء الإمارات</li><li>مناقشة الحالة قبل طلب الفحوصات المعقدة</li><li>تقارير بتصنيف ACMG وترميز HGVS</li></ul>
         <a class="btn btn-primary" href="mailto:support@apml.co?subject=Genetic%20test%20referral">راسل قسم الفحوصات الجينية</a>
       </article>
     </div>
@@ -1367,19 +1391,19 @@ section{padding-block:clamp(64px,8vw,104px)}
       <div class="faq-help"><b>هل لديك سؤال آخر؟</b><p>راسل فريقنا وسيرد عليك أخصائي الوراثة.</p><a class="link-arrow" href="https://wa.me/971508056623">تحدّث معنا عبر واتساب<svg class="ico"><use href="#i-arrow"/></svg></a></div>
     </div>
     <div class="faq">
-      <details open><summary>ما هو الفحص الجيني؟</summary><div class="a"><p>يقرأ الفحص الجيني جزءاً من حمضك النووي للكشف عن التغيّرات التي تسبب حالة صحية أو تزيد خطر الإصابة بها.</p><p>ويمكنه تأكيد التشخيص، أو بيان ما إذا كنت تحمل حالة قد تنقلها إلى أطفالك، أو توجيه علاج السرطان. وتحتاج معظم الفحوصات إلى عينة دم أو لعاب فقط.</p></div></details>
-      <details><summary>أين يقع مختبر أكيوريسي بلس الطبي في أبوظبي؟</summary><div class="a"><p>يقع مختبر أكيوريسي بلس الطبي في M02، مقابل هوم سنتر، شارع حمدان، أبوظبي. اتصل بنا على <bdi dir="ltr">+971 2 633 3923</bdi> أو راسلنا عبر واتساب على <bdi dir="ltr">+971 50 805 6623</bdi>.</p><p>ويمكننا أيضاً سحب عينتك من منزلك أو مكان عملك في أي مكان بالإمارات.</p></div></details>
-      <details><summary>هل مختبر أكيوريسي بلس معتمد؟</summary><div class="a"><p>نعم. مختبر أكيوريسي بلس الطبي معتمد من الكلية الأمريكية لعلماء الأمراض (CAP) ومن مركز الإمارات العالمي للاعتماد (EIAC) وفق معيار ISO 15189.</p></div></details>
-      <details><summary>أين تُحلَّل الفحوصات الجينية؟</summary><div class="a"><p>يعمل أكيوريسي بلس بالشراكة مع مختبرات جينية دولية رائدة، منها CeGaT في ألمانيا وGeneDx في الولايات المتحدة.</p><p>ويخبرك فريقنا بمكان تحليل عينتك والموعد المتوقع لصدور النتيجة.</p></div></details>
-      <details><summary>كم تكلفة الفحص الجيني في أبوظبي؟</summary><div class="a"><p>تعتمد التكلفة على نوع الفحص، فالفحص لجين واحد أقل تكلفة بكثير من تسلسل الجينوم الكامل.</p><p>نؤكد لك السعر الدقيق قبل سحب أي عينة. راسلنا باسم الفحص أو بطلب طبيبك للحصول على عرض سعر.</p></div></details>
-      <details><summary>هل أحتاج إلى إحالة من الطبيب لإجراء فحص جيني؟</summary><div class="a"><p>في معظم الفحوصات لا، إذ يمكنك الحجز مباشرة لدى أكيوريسي بلس.</p><p>وبعض الفحوصات، مثل التنميط الجيني للأورام، تتطلب طلباً من الطبيب المعالج، وسنخبرك بذلك قبل الحجز.</p></div></details>
-      <details><summary>كم تستغرق نتائج الفحص الجيني؟</summary><div class="a"><p>تصدر نتائج NIPT خلال 5 إلى 7 أيام تقريباً، ونتائج فحص الحاملين ولوحات السرطان الوراثي خلال أسبوعين إلى أربعة أسابيع تقريباً، ونتائج تسلسل الإكسوم أو الجينوم الكامل خلال 4 إلى 8 أسابيع تقريباً.</p><p>ونبلغك بالموعد المتوقع عند سحب العينة.</p></div></details>
-      <details><summary>ما هو فحص NIPT ومتى يمكن إجراؤه؟</summary><div class="a"><p>يحلّل فحص الحمض النووي غير الجراحي قبل الولادة (NIPT) أجزاءً من الحمض النووي للجنين الموجودة في دم الأم للكشف عن الحالات الكروموسومية مثل متلازمة داون (التثلث الصبغي 21)، ويمكن إجراؤه من الأسبوع العاشر من الحمل.</p><p>وهو فحص تحرٍّ، لذلك تُؤكَّد النتيجة عالية الخطورة بفحص تشخيصي قبل اتخاذ أي قرار.</p></div></details>
-      <details><summary>ما الفرق بين تسلسل الإكسوم الكامل وتسلسل الجينوم الكامل؟</summary><div class="a"><p>يقرأ تسلسل الإكسوم الكامل المناطق المشفّرة للبروتين في جيناتك، وهي نحو 1 إلى 2 بالمئة من حمضك النووي، حيث توجد معظم المتغيرات المعروفة المسببة للأمراض.</p><p>أما تسلسل الجينوم الكامل فيقرأ معظم القواعد البالغ عددها نحو 3 مليارات، ويمكنه رصد التغيرات البنيوية الأكبر والمتغيرات خارج الجينات. وسيرشدك طبيبك إلى الفحص الأنسب لحالتك.</p></div></details>
-      <details><summary>هل الفحص الجيني قبل الزواج إلزامي في الإمارات؟</summary><div class="a"><p>نعم بالنسبة للمواطنين الإماراتيين، إذ أصبح الفحص الجيني جزءاً من فحص ما قبل الزواج الإلزامي منذ يناير 2025.</p><p>أما لغيرهم من المقيمين فهو اختياري، ويتوفر فحص الحاملين الموسّع لأي زوجين لدى أكيوريسي بلس.</p></div></details>
-      <details><summary>هل يمكنكم سحب العينة من المنزل؟</summary><div class="a"><p>نعم. يسحب فريقنا العينات من المنازل وأماكن العمل في جميع أنحاء دولة الإمارات. احجز موعدك عبر واتساب أو الهاتف.</p></div></details>
-      <details><summary>هل تبقى معلوماتي الجينية سرية؟</summary><div class="a"><p>نعم. لا تُشارَك نتائجك إلا معك ومع الأطباء الذين تأذن لهم، ولا تُستخدم عينتك إلا للفحص الذي وافقت عليه.</p></div></details>
-      <details><summary>هل يغطي التأمين الفحص الجيني؟</summary><div class="a"><p>يعتمد ذلك على خطتك التأمينية والسبب الطبي للفحص، ويمكننا التحقق من شركة التأمين قبل الحجز.</p></div></details>
+      <details id="faq-1" open><summary>ما هو الفحص الجيني؟</summary><div class="a"><p>يقرأ الفحص الجيني جزءاً من حمضك النووي للكشف عن التغيّرات التي تسبب حالة صحية أو تزيد خطر الإصابة بها.</p><p>ويمكنه تأكيد التشخيص، أو بيان ما إذا كنت تحمل حالة قد تنقلها إلى أطفالك، أو توجيه علاج السرطان. وتحتاج معظم الفحوصات إلى عينة دم أو لعاب فقط.</p></div></details>
+      <details id="faq-2"><summary>أين يقع مختبر أكيوريسي بلس الطبي في أبوظبي؟</summary><div class="a"><p>يقع مختبر أكيوريسي بلس الطبي في M02، مقابل هوم سنتر، شارع حمدان، أبوظبي. اتصل بنا على <bdi dir="ltr">+971 2 633 3923</bdi> أو راسلنا عبر واتساب على <bdi dir="ltr">+971 50 805 6623</bdi>.</p><p>ويمكننا أيضاً سحب عينتك من منزلك أو مكان عملك في أي مكان بالإمارات.</p></div></details>
+      <details id="faq-3"><summary>هل مختبر أكيوريسي بلس معتمد؟</summary><div class="a"><p>نعم. مختبر أكيوريسي بلس الطبي معتمد من الكلية الأمريكية لعلماء الأمراض (CAP) ومن مركز الإمارات العالمي للاعتماد (EIAC) وفق معيار ISO 15189.</p></div></details>
+      <details id="faq-4"><summary>أين تُحلَّل الفحوصات الجينية؟</summary><div class="a"><p>يعمل أكيوريسي بلس بالشراكة مع مختبرات جينية دولية رائدة، منها CeGaT في ألمانيا وGeneDx في الولايات المتحدة.</p><p>ويخبرك فريقنا بمكان تحليل عينتك والموعد المتوقع لصدور النتيجة.</p></div></details>
+      <details id="faq-5"><summary>كم تكلفة الفحص الجيني في أبوظبي؟</summary><div class="a"><p>تعتمد التكلفة على نوع الفحص، فالفحص لجين واحد أقل تكلفة بكثير من تسلسل الجينوم الكامل.</p><p>نؤكد لك السعر الدقيق قبل سحب أي عينة. راسلنا باسم الفحص أو بطلب طبيبك للحصول على عرض سعر.</p></div></details>
+      <details id="faq-6"><summary>هل أحتاج إلى إحالة من الطبيب لإجراء فحص جيني؟</summary><div class="a"><p>في معظم الفحوصات لا، إذ يمكنك الحجز مباشرة لدى أكيوريسي بلس.</p><p>وبعض الفحوصات، مثل التنميط الجيني للأورام، تتطلب طلباً من الطبيب المعالج، وسنخبرك بذلك قبل الحجز.</p></div></details>
+      <details id="faq-7"><summary>كم تستغرق نتائج الفحص الجيني؟</summary><div class="a"><p>تصدر نتائج NIPT خلال 5 إلى 7 أيام تقريباً، ونتائج فحص الحاملين ولوحات السرطان الوراثي خلال أسبوعين إلى أربعة أسابيع تقريباً، ونتائج تسلسل الإكسوم أو الجينوم الكامل خلال 4 إلى 8 أسابيع تقريباً.</p><p>ونبلغك بالموعد المتوقع عند سحب العينة.</p></div></details>
+      <details id="faq-8"><summary>ما هو فحص NIPT ومتى يمكن إجراؤه؟</summary><div class="a"><p>يحلّل فحص الحمض النووي غير الجراحي قبل الولادة (NIPT) أجزاءً من الحمض النووي للجنين الموجودة في دم الأم للكشف عن الحالات الكروموسومية مثل متلازمة داون (التثلث الصبغي 21)، ويمكن إجراؤه من الأسبوع العاشر من الحمل.</p><p>وهو فحص تحرٍّ، لذلك تُؤكَّد النتيجة عالية الخطورة بفحص تشخيصي قبل اتخاذ أي قرار.</p></div></details>
+      <details id="faq-9"><summary>ما الفرق بين تسلسل الإكسوم الكامل وتسلسل الجينوم الكامل؟</summary><div class="a"><p>يقرأ تسلسل الإكسوم الكامل المناطق المشفّرة للبروتين في جيناتك، وهي نحو 1 إلى 2 بالمئة من حمضك النووي، حيث توجد معظم المتغيرات المعروفة المسببة للأمراض.</p><p>أما تسلسل الجينوم الكامل فيقرأ معظم القواعد البالغ عددها نحو 3 مليارات، ويمكنه رصد التغيرات البنيوية الأكبر والمتغيرات خارج الجينات. وسيرشدك طبيبك إلى الفحص الأنسب لحالتك.</p></div></details>
+      <details id="faq-10"><summary>هل الفحص الجيني قبل الزواج إلزامي في الإمارات؟</summary><div class="a"><p>نعم بالنسبة للمواطنين الإماراتيين، إذ أصبح الفحص الجيني جزءاً من فحص ما قبل الزواج الإلزامي منذ يناير 2025.</p><p>أما لغيرهم من المقيمين فهو اختياري، ويتوفر فحص الحاملين الموسّع لأي زوجين لدى أكيوريسي بلس.</p></div></details>
+      <details id="faq-11"><summary>هل يمكنكم سحب العينة من المنزل؟</summary><div class="a"><p>نعم. يسحب فريقنا العينات من المنازل وأماكن العمل في جميع أنحاء دولة الإمارات. احجز موعدك عبر واتساب أو الهاتف.</p></div></details>
+      <details id="faq-12"><summary>هل تبقى معلوماتي الجينية سرية؟</summary><div class="a"><p>نعم. لا تُشارَك نتائجك إلا معك ومع الأطباء الذين تأذن لهم، ولا تُستخدم عينتك إلا للفحص الذي وافقت عليه.</p></div></details>
+      <details id="faq-13"><summary>هل يغطي التأمين الفحص الجيني؟</summary><div class="a"><p>يعتمد ذلك على خطتك التأمينية والسبب الطبي للفحص، ويمكننا التحقق من شركة التأمين قبل الحجز.</p></div></details>
       
     </div>
   </div>
@@ -1420,7 +1444,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       <nav aria-label="روابط سريعة">
         <h2>روابط سريعة</h2>
         <ul><li><a href="#how-it-works">كيف تتم الفحوصات</a></li><li><a href="#physicians">للأطباء</a></li><li><a href="#faq">الأسئلة الشائعة</a></li><li><a href="#book">احجز فحصاً</a></li>
-          <li><a href="https://accuracyplus.github.io/genetic-testing-abu-dhabi/" hreflang="en" lang="en">English</a></li>
+          <li><a class="lang-link" href="https://accuracyplus.github.io/genetic-testing-abu-dhabi/" hreflang="en" lang="en">English</a></li>
           <li><a href="https://accuracyplusmedlab.com/">الموقع الرئيسي لأكيوريسي بلس</a></li></ul>
       </nav>
       <div>
@@ -1428,7 +1452,7 @@ section{padding-block:clamp(64px,8vw,104px)}
         <address>
           <span><svg class="ico"><use href="#i-pin"/></svg><span>M02، مقابل هوم سنتر، شارع حمدان، أبوظبي، الإمارات العربية المتحدة</span></span>
           <span><svg class="ico"><use href="#i-phone"/></svg><span><a href="tel:+97126333923"><bdi dir="ltr">+971 2 633 3923</bdi></a><br><a href="tel:+971542346392"><bdi dir="ltr">+971 54 234 6392</bdi></a></span></span>
-          <span><svg class="ico"><use href="#i-chat"/></svg><span><a href="https://wa.me/971508056623">واتساب <bdi dir="ltr">+971 50 805 6623</bdi></a></span></span>
+          <span><svg class="ico"><use href="#i-chat"/></svg><span><a href="https://wa.me/971508056623" target="_blank" rel="noopener">واتساب <bdi dir="ltr">+971 50 805 6623</bdi></a></span></span>
           <span><svg class="ico"><use href="#i-mail"/></svg><span><a href="mailto:support@apml.co">support@apml.co</a></span></span>
         </address>
       </div>
@@ -1442,9 +1466,10 @@ section{padding-block:clamp(64px,8vw,104px)}
 
 <nav class="mbar" id="mbar" aria-label="احجز فحصاً">
   <a href="tel:+97126333923"><svg class="ico"><use href="#i-phone"/></svg>اتصال</a>
-  <a class="wa" href="https://wa.me/971508056623"><svg class="ico"><use href="#i-chat"/></svg>واتساب</a>
+  <a class="wa" href="https://wa.me/971508056623" target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat"/></svg>واتساب</a>
   <a class="bk" href="#book"><svg class="ico"><use href="#i-cal"/></svg>احجز</a>
 </nav>
+<a class="to-top" id="to-top" href="#top" aria-label="العودة إلى الأعلى" tabindex="-1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
 
 <script>
 (function(){
@@ -1457,12 +1482,16 @@ section{padding-block:clamp(64px,8vw,104px)}
   btn.addEventListener('click',function(){setMenu(btn.getAttribute('aria-expanded')!=='true')});
   list.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&btn.getAttribute('aria-expanded')==='true'){setMenu(false);btn.focus();}});
+  document.addEventListener('click',function(e){if(btn.getAttribute('aria-expanded')==='true'&&!e.target.closest('.nav'))setMenu(false);});
 
   /* header shadow + mobile bar */
   var head=document.querySelector('.site-head'),mbar=document.getElementById('mbar'),book=document.getElementById('book');
-  var ticking=false;
+  var ticking=false,prog=document.getElementById('progress'),toTop=document.getElementById('to-top'),topOn=false;
+  toTop.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});document.getElementById('hero-title').setAttribute('tabindex','-1');document.getElementById('hero-title').focus({preventScroll:true});});
   function onScroll(){ticking=false;var y=window.scrollY||0;head.classList.toggle('scrolled',y>8);
-    var r=book.getBoundingClientRect();mbar.classList.toggle('show',y>420&&(r.bottom<0||r.top>window.innerHeight));}
+    var r=book.getBoundingClientRect();mbar.classList.toggle('show',y>420&&(r.bottom<0||r.top>window.innerHeight));
+    var max=document.documentElement.scrollHeight-window.innerHeight;prog.style.setProperty('--p',max>0?Math.min(1,y/max):0);
+    var up=y>900;if(up!==topOn){topOn=up;toTop.classList.toggle('show',up);toTop.tabIndex=up?0:-1;}}
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
   onScroll();
 
@@ -1549,13 +1578,34 @@ section{padding-block:clamp(64px,8vw,104px)}
   document.addEventListener('visibilitychange',schedule);
   show(0);
 
+
+  /* scrollspy: highlight current section in the menu; language switch keeps your place */
+  var navA=[].slice.call(document.querySelectorAll('.nav-links a[href^="#"]')),langA=[].slice.call(document.querySelectorAll('.lang-link'));
+  langA.forEach(function(a){a.dataset.base=a.getAttribute('href');});
+  var secs=navA.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  function setCur(id){navA.forEach(function(a){if(a.getAttribute('href')==='#'+id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
+    langA.forEach(function(a){a.setAttribute('href',a.dataset.base+(id?'#'+id:''));});}
+  if('IntersectionObserver' in window&&secs.length){var vis={};
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.id]=e.isIntersecting;});
+      var id='';for(var i=0;i<secs.length;i++){if(vis[secs[i].id]){id=secs[i].id;break;}}setCur(id);},{rootMargin:'-35% 0px -60% 0px'});
+    secs.forEach(function(s){so.observe(s);});}
+
+  /* FAQ: open the question named in the link (#faq-3) */
+  function openHash(){var h=location.hash.slice(1),el=h&&document.getElementById(h);if(el&&el.tagName==='DETAILS'){el.open=true;}}
+  openHash();window.addEventListener('hashchange',openHash);
+
   /* test card buttons preselect the test in the booking form */
-  document.querySelectorAll('.tcard-cta').forEach(function(a){a.addEventListener('click',function(){var s=document.getElementById('bk-test');s.selectedIndex=+a.dataset.test;setTimeout(function(){document.getElementById('bk-name').focus({preventScroll:true});},600);});});
+  document.querySelectorAll('.tcard-cta').forEach(function(a){a.addEventListener('click',function(){var s=document.getElementById('bk-test');s.selectedIndex=+a.dataset.test;var f=s.closest('.field');f.classList.remove('ok');void f.offsetWidth;f.classList.add('ok');setTimeout(function(){document.getElementById('bk-name').focus({preventScroll:true});},600);});});
 
   /* booking form -> WhatsApp */
   var WA='971508056623',L={"hi": "مرحباً أكيوريسي بلس، أرغب في حجز فحص جيني.", "name": "الاسم", "phone": "الجوال", "test": "الفحص", "date": "التاريخ المفضل", "where": "مكان سحب العينة", "done": "رسالة الحجز جاهزة. أرسلها إلينا عبر واتساب لتأكيد موعدك.", "done_link": "افتح واتساب للإرسال"};
   var form=book,done=document.getElementById('book-done'),dt=document.getElementById('bk-date');
-  try{dt.min=new Date().toISOString().slice(0,10);}catch(e){}
+  try{var td=new Date();dt.min=new Date(td.getTime()-td.getTimezoneOffset()*6e4).toISOString().slice(0,10);}catch(e){}
+  var KEY='apml-gen-booking';
+  try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv){if(!form.name.value)form.name.value=sv.name||'';if(!form.phone.value)form.phone.value=sv.phone||'';
+    if(sv.where!=null&&form.where.options[sv.where])form.where.selectedIndex=sv.where;}}catch(e){}
+  [['name','f-name','bk-name-err'],['phone','f-phone','bk-phone-err']].forEach(function(x){form[x[0]].addEventListener('input',function(){
+    if(form[x[0]].getAttribute('aria-invalid')==='true'){var ok=x[0]==='name'?form.name.value.trim().length>=2:form.phone.value.replace(/\D/g,'').length>=9;if(ok){flag(x[1],x[2],false);form[x[0]].setAttribute('aria-invalid','false');}}});});
   function flag(id,errId,bad){document.getElementById(id).setAttribute('data-invalid',bad);document.getElementById(errId).hidden=!bad;}
   form.addEventListener('submit',function(e){
     e.preventDefault();
@@ -1566,6 +1616,7 @@ section{padding-block:clamp(64px,8vw,104px)}
     if(badName){form.name.focus();return;} if(badPhone){form.phone.focus();return;}
     var msg=L.hi+'\n'+L.name+': '+name+'\n'+L.phone+': '+phone+'\n'+L.test+': '+form.test.value+(form.date.value?'\n'+L.date+': '+form.date.value:'')+'\n'+L.where+': '+form.where.value;
     var url='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+    try{localStorage.setItem(KEY,JSON.stringify({name:name,phone:phone,where:form.where.selectedIndex}));}catch(err){}
     done.textContent='';
     var p=document.createElement('p');p.textContent=L.done;
     var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent=L.done_link;

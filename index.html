@@ -932,6 +932,29 @@ section{padding-block:clamp(64px,8vw,104px)}
   .rv-wait{translate:none}
   .hero-photo{opacity:1}
 }
+
+/* Quality of life */
+.progress{position:absolute;inset-inline:0;bottom:-1px;height:3px;pointer-events:none}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),#FF5A60);transform:scaleX(var(--p,0));transform-origin:left center;will-change:transform}
+[dir="rtl"] .progress i{transform-origin:right center;background:linear-gradient(270deg,var(--brand),#FF5A60)}
+.nav-links a[aria-current]{color:var(--brand)}
+.nav-links a[aria-current]::after{transform:scaleX(1)}
+.to-top{position:fixed;inset-inline-end:max(20px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:55;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--brand);border:1px solid var(--line);box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;translate:0 12px;transition:opacity .3s ease,translate .3s var(--ease),visibility 0s linear .3s,box-shadow .25s ease}
+.to-top.show{opacity:1;visibility:visible;translate:none;transition:opacity .3s ease,translate .3s var(--ease),visibility 0s,box-shadow .25s ease}
+.to-top:hover{box-shadow:var(--shadow-lg),var(--glow)}
+.to-top .ico{width:20px;height:20px}
+@media (max-width:899px){.to-top{bottom:calc(88px + env(safe-area-inset-bottom,0px));width:44px;height:44px}}
+.field.ok .control{animation:pickflash 1.2s ease}
+@keyframes pickflash{0%,100%{box-shadow:none}25%{box-shadow:0 0 0 4px rgba(215,20,31,.25)}}
+.faq details:target{border-color:var(--brand)}
+@media print{
+  .topbar,.site-head,.hero-visual,.hero-mesh,.hero-grid-bg,.mbar,.to-top,.book,.float-card,.j-ctrl,.cta,.skip,.foot .social{display:none!important}
+  .hero--dark,.hero--dark *{color:#000!important;background:none!important}
+  .rv-wait{translate:none!important}
+  .faq details .a,.j-panel{display:block!important}
+  body{padding:0!important}
+  a[href^="tel:"]::after,a[href^="mailto:"]::after{content:""}
+}
 </style>
 </head>
 <body>
@@ -972,7 +995,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       <li class="hide-sm"><svg class="ico"><use href="#i-mail"/></svg><a href="mailto:support@apml.co">support@apml.co</a></li>
     </ul>
     <ul>
-      <li class="hide-sm"><svg class="ico"><use href="#i-chat"/></svg><a href="https://wa.me/971508056623">WhatsApp <bdi dir="ltr">+971 50 805 6623</bdi></a></li>
+      <li class="hide-sm"><svg class="ico"><use href="#i-chat"/></svg><a href="https://wa.me/971508056623" target="_blank" rel="noopener">WhatsApp <bdi dir="ltr">+971 50 805 6623</bdi></a></li>
       <li><a class="lang-link" href="https://accuracyplus.github.io/genetic-testing-abu-dhabi/ar/" hreflang="ar" lang="ar">العربية</a></li>
     </ul>
   </div>
@@ -998,6 +1021,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       </button>
     </nav>
   </div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
 </header>
 
 <main id="main">
@@ -1352,7 +1376,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       <article class="dark rv" id="physicians" style="--d:1">
         <span class="ib"><svg class="ico"><use href="#i-steth"/></svg></span>
         <h3>For doctors</h3>
-        <ul><li>Test request forms and sample requirements on request</li><li>Sample pickup from your clinic in Abu Dhabi</li><li>Case discussion before ordering complex tests</li><li>Reports with ACMG classification and HGVS nomenclature</li></ul>
+        <ul><li>Test request forms and sample requirements on request</li><li>Sample pickup from your clinic anywhere in the UAE</li><li>Case discussion before ordering complex tests</li><li>Reports with ACMG classification and HGVS nomenclature</li></ul>
         <a class="btn btn-primary" href="mailto:support@apml.co?subject=Genetic%20test%20referral">Email the genetics desk</a>
       </article>
     </div>
@@ -1367,19 +1391,19 @@ section{padding-block:clamp(64px,8vw,104px)}
       <div class="faq-help"><b>Still have a question?</b><p>Message our team and a genetics specialist will reply.</p><a class="link-arrow" href="https://wa.me/971508056623">Chat on WhatsApp<svg class="ico"><use href="#i-arrow"/></svg></a></div>
     </div>
     <div class="faq">
-      <details open><summary>What is genetic testing?</summary><div class="a"><p>A genetic test reads part of your DNA to find changes that cause a health condition or raise the risk of one.</p><p>It can confirm a diagnosis, show whether you carry a condition you could pass on to your children, or guide cancer treatment. Most tests need only a blood or saliva sample.</p></div></details>
-      <details><summary>Where is Accuracy Plus Medical Laboratory in Abu Dhabi?</summary><div class="a"><p>Accuracy Plus Medical Laboratory is at M02, Opposite Home Centre, Hamdan Street, Abu Dhabi. Call <bdi dir="ltr">+971 2 633 3923</bdi> or message us on WhatsApp at <bdi dir="ltr">+971 50 805 6623</bdi>.</p><p>We can also collect your sample at home or at work anywhere in the UAE.</p></div></details>
-      <details><summary>Is Accuracy Plus an accredited laboratory?</summary><div class="a"><p>Yes. Accuracy Plus Medical Laboratory is accredited by the College of American Pathologists (CAP) and by the Emirates International Accreditation Centre (EIAC) to ISO 15189.</p></div></details>
-      <details><summary>Which laboratories analyse the genetic tests?</summary><div class="a"><p>Accuracy Plus works in partnership with leading international genetics laboratories, including CeGaT in Germany and GeneDx in the United States.</p><p>Our team tells you where your sample will be analysed and when to expect the result.</p></div></details>
-      <details><summary>How much does genetic testing cost in Abu Dhabi?</summary><div class="a"><p>The cost depends on the test. A single-gene test costs far less than whole genome sequencing.</p><p>We confirm the exact price before any sample is taken. Message us with the test name or your doctor&#39;s request for a quote.</p></div></details>
-      <details><summary>Do I need a doctor&#39;s referral for a genetic test?</summary><div class="a"><p>For most tests, no. You can book directly with Accuracy Plus.</p><p>Some tests, such as tumour profiling, need a request from your treating doctor. We will tell you before you book.</p></div></details>
-      <details><summary>How long do genetic test results take?</summary><div class="a"><p>NIPT results take about 5 to 7 days. Carrier screening and hereditary cancer panels take about 2 to 4 weeks, and whole exome or genome sequencing about 4 to 8 weeks.</p><p>We give you the expected date when your sample is collected.</p></div></details>
-      <details><summary>What is NIPT and when can I have it?</summary><div class="a"><p>Non-invasive prenatal testing (NIPT) analyses fragments of your baby&#39;s DNA in your blood to screen for chromosome conditions such as Down syndrome (trisomy 21). It can be done from 10 weeks of pregnancy.</p><p>NIPT is a screening test, so a high-risk result is confirmed with a diagnostic test before any decision is made.</p></div></details>
-      <details><summary>What is the difference between whole exome and whole genome sequencing?</summary><div class="a"><p>Whole exome sequencing reads the protein-coding regions of your genes, about 1 to 2 percent of your DNA, where most known disease-causing variants are found.</p><p>Whole genome sequencing reads almost all 3 billion base pairs and can also find larger structural changes and variants outside genes. Your doctor will advise which one fits your case.</p></div></details>
-      <details><summary>Is genetic testing mandatory before marriage in the UAE?</summary><div class="a"><p>For Emirati citizens, yes. Genetic testing has been part of mandatory premarital screening since January 2025.</p><p>For other residents it is optional. Expanded carrier screening is available to any couple at Accuracy Plus.</p></div></details>
-      <details><summary>Can you collect my sample at home?</summary><div class="a"><p>Yes. Our team collects samples at homes and workplaces across the UAE. Book a slot by WhatsApp or phone.</p></div></details>
-      <details><summary>Is my genetic information kept confidential?</summary><div class="a"><p>Yes. Your results are shared only with you and the doctors you authorise, and your sample is used only for the test you consented to.</p></div></details>
-      <details><summary>Does insurance cover genetic testing?</summary><div class="a"><p>It depends on your plan and the medical reason for the test. We can check with your insurer before you book.</p></div></details>
+      <details id="faq-1" open><summary>What is genetic testing?</summary><div class="a"><p>A genetic test reads part of your DNA to find changes that cause a health condition or raise the risk of one.</p><p>It can confirm a diagnosis, show whether you carry a condition you could pass on to your children, or guide cancer treatment. Most tests need only a blood or saliva sample.</p></div></details>
+      <details id="faq-2"><summary>Where is Accuracy Plus Medical Laboratory in Abu Dhabi?</summary><div class="a"><p>Accuracy Plus Medical Laboratory is at M02, Opposite Home Centre, Hamdan Street, Abu Dhabi. Call <bdi dir="ltr">+971 2 633 3923</bdi> or message us on WhatsApp at <bdi dir="ltr">+971 50 805 6623</bdi>.</p><p>We can also collect your sample at home or at work anywhere in the UAE.</p></div></details>
+      <details id="faq-3"><summary>Is Accuracy Plus an accredited laboratory?</summary><div class="a"><p>Yes. Accuracy Plus Medical Laboratory is accredited by the College of American Pathologists (CAP) and by the Emirates International Accreditation Centre (EIAC) to ISO 15189.</p></div></details>
+      <details id="faq-4"><summary>Which laboratories analyse the genetic tests?</summary><div class="a"><p>Accuracy Plus works in partnership with leading international genetics laboratories, including CeGaT in Germany and GeneDx in the United States.</p><p>Our team tells you where your sample will be analysed and when to expect the result.</p></div></details>
+      <details id="faq-5"><summary>How much does genetic testing cost in Abu Dhabi?</summary><div class="a"><p>The cost depends on the test. A single-gene test costs far less than whole genome sequencing.</p><p>We confirm the exact price before any sample is taken. Message us with the test name or your doctor&#39;s request for a quote.</p></div></details>
+      <details id="faq-6"><summary>Do I need a doctor&#39;s referral for a genetic test?</summary><div class="a"><p>For most tests, no. You can book directly with Accuracy Plus.</p><p>Some tests, such as tumour profiling, need a request from your treating doctor. We will tell you before you book.</p></div></details>
+      <details id="faq-7"><summary>How long do genetic test results take?</summary><div class="a"><p>NIPT results take about 5 to 7 days. Carrier screening and hereditary cancer panels take about 2 to 4 weeks, and whole exome or genome sequencing about 4 to 8 weeks.</p><p>We give you the expected date when your sample is collected.</p></div></details>
+      <details id="faq-8"><summary>What is NIPT and when can I have it?</summary><div class="a"><p>Non-invasive prenatal testing (NIPT) analyses fragments of your baby&#39;s DNA in your blood to screen for chromosome conditions such as Down syndrome (trisomy 21). It can be done from 10 weeks of pregnancy.</p><p>NIPT is a screening test, so a high-risk result is confirmed with a diagnostic test before any decision is made.</p></div></details>
+      <details id="faq-9"><summary>What is the difference between whole exome and whole genome sequencing?</summary><div class="a"><p>Whole exome sequencing reads the protein-coding regions of your genes, about 1 to 2 percent of your DNA, where most known disease-causing variants are found.</p><p>Whole genome sequencing reads almost all 3 billion base pairs and can also find larger structural changes and variants outside genes. Your doctor will advise which one fits your case.</p></div></details>
+      <details id="faq-10"><summary>Is genetic testing mandatory before marriage in the UAE?</summary><div class="a"><p>For Emirati citizens, yes. Genetic testing has been part of mandatory premarital screening since January 2025.</p><p>For other residents it is optional. Expanded carrier screening is available to any couple at Accuracy Plus.</p></div></details>
+      <details id="faq-11"><summary>Can you collect my sample at home?</summary><div class="a"><p>Yes. Our team collects samples at homes and workplaces across the UAE. Book a slot by WhatsApp or phone.</p></div></details>
+      <details id="faq-12"><summary>Is my genetic information kept confidential?</summary><div class="a"><p>Yes. Your results are shared only with you and the doctors you authorise, and your sample is used only for the test you consented to.</p></div></details>
+      <details id="faq-13"><summary>Does insurance cover genetic testing?</summary><div class="a"><p>It depends on your plan and the medical reason for the test. We can check with your insurer before you book.</p></div></details>
       
     </div>
   </div>
@@ -1420,7 +1444,7 @@ section{padding-block:clamp(64px,8vw,104px)}
       <nav aria-label="Quick links">
         <h2>Quick links</h2>
         <ul><li><a href="#how-it-works">How it works</a></li><li><a href="#physicians">For doctors</a></li><li><a href="#faq">FAQ</a></li><li><a href="#book">Book a test</a></li>
-          <li><a href="https://accuracyplus.github.io/genetic-testing-abu-dhabi/ar/" hreflang="ar" lang="ar">العربية</a></li>
+          <li><a class="lang-link" href="https://accuracyplus.github.io/genetic-testing-abu-dhabi/ar/" hreflang="ar" lang="ar">العربية</a></li>
           <li><a href="https://accuracyplusmedlab.com/">Accuracy Plus home</a></li></ul>
       </nav>
       <div>
@@ -1428,7 +1452,7 @@ section{padding-block:clamp(64px,8vw,104px)}
         <address>
           <span><svg class="ico"><use href="#i-pin"/></svg><span>M02, Opposite Home Centre, Hamdan Street, Abu Dhabi, UAE</span></span>
           <span><svg class="ico"><use href="#i-phone"/></svg><span><a href="tel:+97126333923"><bdi dir="ltr">+971 2 633 3923</bdi></a><br><a href="tel:+971542346392"><bdi dir="ltr">+971 54 234 6392</bdi></a></span></span>
-          <span><svg class="ico"><use href="#i-chat"/></svg><span><a href="https://wa.me/971508056623">WhatsApp <bdi dir="ltr">+971 50 805 6623</bdi></a></span></span>
+          <span><svg class="ico"><use href="#i-chat"/></svg><span><a href="https://wa.me/971508056623" target="_blank" rel="noopener">WhatsApp <bdi dir="ltr">+971 50 805 6623</bdi></a></span></span>
           <span><svg class="ico"><use href="#i-mail"/></svg><span><a href="mailto:support@apml.co">support@apml.co</a></span></span>
         </address>
       </div>
@@ -1442,9 +1466,10 @@ section{padding-block:clamp(64px,8vw,104px)}
 
 <nav class="mbar" id="mbar" aria-label="Book a test">
   <a href="tel:+97126333923"><svg class="ico"><use href="#i-phone"/></svg>Call</a>
-  <a class="wa" href="https://wa.me/971508056623"><svg class="ico"><use href="#i-chat"/></svg>WhatsApp</a>
+  <a class="wa" href="https://wa.me/971508056623" target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat"/></svg>WhatsApp</a>
   <a class="bk" href="#book"><svg class="ico"><use href="#i-cal"/></svg>Book</a>
 </nav>
+<a class="to-top" id="to-top" href="#top" aria-label="Back to top" tabindex="-1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
 
 <script>
 (function(){
@@ -1457,12 +1482,16 @@ section{padding-block:clamp(64px,8vw,104px)}
   btn.addEventListener('click',function(){setMenu(btn.getAttribute('aria-expanded')!=='true')});
   list.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&btn.getAttribute('aria-expanded')==='true'){setMenu(false);btn.focus();}});
+  document.addEventListener('click',function(e){if(btn.getAttribute('aria-expanded')==='true'&&!e.target.closest('.nav'))setMenu(false);});
 
   /* header shadow + mobile bar */
   var head=document.querySelector('.site-head'),mbar=document.getElementById('mbar'),book=document.getElementById('book');
-  var ticking=false;
+  var ticking=false,prog=document.getElementById('progress'),toTop=document.getElementById('to-top'),topOn=false;
+  toTop.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});document.getElementById('hero-title').setAttribute('tabindex','-1');document.getElementById('hero-title').focus({preventScroll:true});});
   function onScroll(){ticking=false;var y=window.scrollY||0;head.classList.toggle('scrolled',y>8);
-    var r=book.getBoundingClientRect();mbar.classList.toggle('show',y>420&&(r.bottom<0||r.top>window.innerHeight));}
+    var r=book.getBoundingClientRect();mbar.classList.toggle('show',y>420&&(r.bottom<0||r.top>window.innerHeight));
+    var max=document.documentElement.scrollHeight-window.innerHeight;prog.style.setProperty('--p',max>0?Math.min(1,y/max):0);
+    var up=y>900;if(up!==topOn){topOn=up;toTop.classList.toggle('show',up);toTop.tabIndex=up?0:-1;}}
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
   onScroll();
 
@@ -1549,13 +1578,34 @@ section{padding-block:clamp(64px,8vw,104px)}
   document.addEventListener('visibilitychange',schedule);
   show(0);
 
+
+  /* scrollspy: highlight current section in the menu; language switch keeps your place */
+  var navA=[].slice.call(document.querySelectorAll('.nav-links a[href^="#"]')),langA=[].slice.call(document.querySelectorAll('.lang-link'));
+  langA.forEach(function(a){a.dataset.base=a.getAttribute('href');});
+  var secs=navA.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  function setCur(id){navA.forEach(function(a){if(a.getAttribute('href')==='#'+id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
+    langA.forEach(function(a){a.setAttribute('href',a.dataset.base+(id?'#'+id:''));});}
+  if('IntersectionObserver' in window&&secs.length){var vis={};
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.id]=e.isIntersecting;});
+      var id='';for(var i=0;i<secs.length;i++){if(vis[secs[i].id]){id=secs[i].id;break;}}setCur(id);},{rootMargin:'-35% 0px -60% 0px'});
+    secs.forEach(function(s){so.observe(s);});}
+
+  /* FAQ: open the question named in the link (#faq-3) */
+  function openHash(){var h=location.hash.slice(1),el=h&&document.getElementById(h);if(el&&el.tagName==='DETAILS'){el.open=true;}}
+  openHash();window.addEventListener('hashchange',openHash);
+
   /* test card buttons preselect the test in the booking form */
-  document.querySelectorAll('.tcard-cta').forEach(function(a){a.addEventListener('click',function(){var s=document.getElementById('bk-test');s.selectedIndex=+a.dataset.test;setTimeout(function(){document.getElementById('bk-name').focus({preventScroll:true});},600);});});
+  document.querySelectorAll('.tcard-cta').forEach(function(a){a.addEventListener('click',function(){var s=document.getElementById('bk-test');s.selectedIndex=+a.dataset.test;var f=s.closest('.field');f.classList.remove('ok');void f.offsetWidth;f.classList.add('ok');setTimeout(function(){document.getElementById('bk-name').focus({preventScroll:true});},600);});});
 
   /* booking form -> WhatsApp */
   var WA='971508056623',L={"hi": "Hello Accuracy Plus, I would like to book a genetic test.", "name": "Name", "phone": "Mobile", "test": "Test", "date": "Preferred date", "where": "Collection", "done": "Your booking message is ready. Send it to us on WhatsApp to confirm your appointment.", "done_link": "Open WhatsApp to send"};
   var form=book,done=document.getElementById('book-done'),dt=document.getElementById('bk-date');
-  try{dt.min=new Date().toISOString().slice(0,10);}catch(e){}
+  try{var td=new Date();dt.min=new Date(td.getTime()-td.getTimezoneOffset()*6e4).toISOString().slice(0,10);}catch(e){}
+  var KEY='apml-gen-booking';
+  try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv){if(!form.name.value)form.name.value=sv.name||'';if(!form.phone.value)form.phone.value=sv.phone||'';
+    if(sv.where!=null&&form.where.options[sv.where])form.where.selectedIndex=sv.where;}}catch(e){}
+  [['name','f-name','bk-name-err'],['phone','f-phone','bk-phone-err']].forEach(function(x){form[x[0]].addEventListener('input',function(){
+    if(form[x[0]].getAttribute('aria-invalid')==='true'){var ok=x[0]==='name'?form.name.value.trim().length>=2:form.phone.value.replace(/\D/g,'').length>=9;if(ok){flag(x[1],x[2],false);form[x[0]].setAttribute('aria-invalid','false');}}});});
   function flag(id,errId,bad){document.getElementById(id).setAttribute('data-invalid',bad);document.getElementById(errId).hidden=!bad;}
   form.addEventListener('submit',function(e){
     e.preventDefault();
@@ -1566,6 +1616,7 @@ section{padding-block:clamp(64px,8vw,104px)}
     if(badName){form.name.focus();return;} if(badPhone){form.phone.focus();return;}
     var msg=L.hi+'\n'+L.name+': '+name+'\n'+L.phone+': '+phone+'\n'+L.test+': '+form.test.value+(form.date.value?'\n'+L.date+': '+form.date.value:'')+'\n'+L.where+': '+form.where.value;
     var url='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+    try{localStorage.setItem(KEY,JSON.stringify({name:name,phone:phone,where:form.where.selectedIndex}));}catch(err){}
     done.textContent='';
     var p=document.createElement('p');p.textContent=L.done;
     var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent=L.done_link;
